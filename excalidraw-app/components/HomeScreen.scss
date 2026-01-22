@@ -1,0 +1,179 @@
+.excalidraw-home-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--color-surface-primary-container, #ffffff);
+  color: var(--color-on-surface, #1e1e1e);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &__container {
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--color-on-surface, #1e1e1e);
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: var(--color-on-surface-secondary, #666666);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  &__button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &--primary {
+      background-color: var(--color-primary, #6965db);
+      color: var(--color-on-primary, #ffffff);
+
+      &:hover {
+        background-color: var(--color-primary-dark, #5753c9);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(105, 101, 219, 0.3);
+      }
+    }
+
+    &--secondary {
+      background-color: var(--color-surface-secondary, #f5f5f5);
+      color: var(--color-on-surface, #1e1e1e);
+      border: 2px solid var(--color-outline, #e0e0e0);
+
+      &:hover {
+        background-color: var(--color-surface-secondary-hover, #ebebeb);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  &__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  &__feature {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-surface-secondary, #f5f5f5);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &__feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--color-on-surface, #1e1e1e);
+  }
+
+  &__feature-description {
+    font-size: 1rem;
+    color: var(--color-on-surface-secondary, #666666);
+    line-height: 1.5;
+  }
+
+  // Mobile responsive
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+    }
+
+    &__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__button {
+      width: 100%;
+    }
+
+    &__features {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Dark theme support
+.theme--dark {
+  .excalidraw-home-screen {
+    background-color: var(--color-surface-primary-container, #1e1e1e);
+    color: var(--color-on-surface, #e0e0e0);
+
+    &__title {
+      color: var(--color-on-surface, #e0e0e0);
+    }
+
+    &__subtitle {
+      color: var(--color-on-surface-secondary, #a0a0a0);
+    }
+
+    &__button {
+      &--secondary {
+        background-color: var(--color-surface-secondary, #2a2a2a);
+        color: var(--color-on-surface, #e0e0e0);
+        border-color: var(--color-outline, #444444);
+
+        &:hover {
+          background-color: var(--color-surface-secondary-hover, #333333);
+        }
+      }
+    }
+
+    &__feature {
+      background-color: var(--color-surface-secondary, #2a2a2a);
+
+      &:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    &__feature-title {
+      color: var(--color-on-surface, #e0e0e0);
+    }
+
+    &__feature-description {
+      color: var(--color-on-surface-secondary, #a0a0a0);
+    }
+  }
+}

@@ -1,0 +1,105 @@
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--color-surface-primary-container);
+
+  &.theme--dark {
+    background: var(--color-surface-primary-container);
+  }
+
+  &__container {
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  &__island {
+    padding: 3rem;
+    
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: var(--color-on-surface);
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    color: var(--color-on-surface-variant);
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-on-surface);
+  }
+
+  &__card-description {
+    font-size: 1rem;
+    color: var(--color-on-surface-variant);
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  &__button {
+    min-width: 200px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+}

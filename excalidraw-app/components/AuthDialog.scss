@@ -1,0 +1,64 @@
+.AuthDialog {
+  padding: var(--space-factor);
+  
+  &__header {
+    margin-bottom: calc(var(--space-factor) * 2);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+
+  &__content {
+    min-width: 320px;
+  }
+}
+
+.AuthForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-factor);
+
+  &__field {
+    margin-bottom: calc(var(--space-factor) * 0.5);
+  }
+
+  &__error {
+    padding: calc(var(--space-factor) * 0.75);
+    background-color: var(--color-danger-bg);
+    color: var(--color-danger);
+    border-radius: var(--border-radius-lg);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-factor);
+  }
+
+  &__actions {
+    margin-top: var(--space-factor);
+  }
+
+  &__submit {
+    width: 100%;
+  }
+
+  &__footer {
+    margin-top: var(--space-factor);
+    text-align: center;
+  }
+
+  &__link {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.875rem;
+    padding: 0;
+
+    &:hover {
+      color: var(--color-primary-darker);
+    }
+  }
+}

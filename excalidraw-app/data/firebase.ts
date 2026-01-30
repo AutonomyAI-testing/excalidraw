@@ -16,6 +16,15 @@ import {
   Bytes,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  type Auth,
+  type User,
+} from "firebase/auth";
 
 import type { RemoteExcalidrawElement } from "@excalidraw/excalidraw/data/reconcile";
 import type {
@@ -316,4 +325,68 @@ export const loadFilesFromFirebase = async (
   );
 
   return { loadedFiles, erroredFiles };
+};
+
+// Auth methods
+// -----------------------------------------------------------------------------
+
+let auth: Auth | null = null;
+
+const _getAuth = () => {
+  if (!auth) {
+    auth = getAuth(_initializeFirebase());
+  }
+  return auth;
+};
+
+/**
+ * Sign in with email and password
+ */
+export const signIn = async (email: string, password: string): Promise<User> => {
+  const authInstance = _getAuth();
+  const userCredential = await signInWithEmailAndPassword(
+    authInstance,
+    email,
+    password,
+  );
+  return userCredential.user;
+};
+
+/**
+ * Create a new user account with email and password
+ */
+export const signUp = async (email: string, password: string): Promise<User> => {
+  const authInstance = _getAuth();
+  const userCredential = await createUserWithEmailAndPassword(
+    authInstance,
+    email,
+    password,
+  );
+  return userCredential.user;
+};
+
+/**
+ * Sign out the current user
+ */
+export const logOut = async (): Promise<void> => {
+  const authInstance = _getAuth();
+  await signOut(authInstance);
+};
+
+/**
+ * Set up auth state listener
+ */
+export const setupAuthListener = (
+  callback: (user: User | null) => void,
+): (() => void) => {
+  const authInstance = _getAuth();
+  return onAuthStateChanged(authInstance, callback);
+};
+
+/**
+ * Get the current authenticated user
+ */
+export const getCurrentUser = (): User | null => {
+  const authInstance = _getAuth();
+  return authInstance.currentUser;
 };

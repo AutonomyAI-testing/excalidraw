@@ -12,6 +12,9 @@ import type { Theme } from "@excalidraw/element/types";
 
 import { LanguageList } from "../app-language/LanguageList";
 import { isExcalidrawPlusSignedUser } from "../app_constants";
+import { useSetAtom, useAtomValue } from "../app-jotai";
+import { authDialogStateAtom, currentUserAtom } from "../app-jotai";
+import { logOut } from "../data/firebase";
 
 import { saveDebugState } from "./DebugCanvas";
 
@@ -23,6 +26,9 @@ export const AppMainMenu: React.FC<{
   setTheme: (theme: Theme | "system") => void;
   refresh: () => void;
 }> = React.memo((props) => {
+  const setAuthDialogState = useSetAtom(authDialogStateAtom);
+  const currentUser = useAtomValue(currentUserAtom);
+
   return (
     <MainMenu>
       <MainMenu.DefaultItems.LoadScene />
@@ -50,15 +56,19 @@ export const AppMainMenu: React.FC<{
         Excalidraw+
       </MainMenu.ItemLink>
       <MainMenu.DefaultItems.Socials />
-      <MainMenu.ItemLink
+      <MainMenu.Item
         icon={loginIcon}
-        href={`${import.meta.env.VITE_APP_PLUS_APP}${
-          isExcalidrawPlusSignedUser ? "" : "/sign-up"
-        }?utm_source=signin&utm_medium=app&utm_content=hamburger`}
+        onClick={() => {
+          if (currentUser) {
+            logOut();
+          } else {
+            setAuthDialogState({ isOpen: true, mode: "signin" });
+          }
+        }}
         className="highlighted"
       >
-        {isExcalidrawPlusSignedUser ? "Sign in" : "Sign up"}
-      </MainMenu.ItemLink>
+        {currentUser ? `Sign out (${currentUser.email})` : "Sign in"}
+      </MainMenu.Item>
       {isDevEnv() && (
         <MainMenu.Item
           icon={eyeIcon}

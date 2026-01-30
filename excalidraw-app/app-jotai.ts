@@ -35,3 +35,17 @@ export const useAtomWithInitialValue = <
 
   return [value, setValue] as const;
 };
+
+// Auth state atoms
+export const authDialogStateAtom = atom<
+  { isOpen: false } | { isOpen: true; mode: "signin" | "signup" }
+>({ isOpen: false });
+
+export const currentUserAtom = atom<{
+  uid: string;
+  email: string;
+  displayName?: string;
+} | null>(null);
+
+export const authLoadingAtom = atom<boolean>(false);
+export const authErrorAtom = atom<string | null>(null);

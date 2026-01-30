@@ -987,6 +987,13 @@ const ExcalidrawWrapper = () => {
           }}
         />
 
+        {authDialogState.isOpen && (
+          <AuthDialog
+            handleClose={() => setAuthDialogState({ isOpen: false })}
+            initialMode={authDialogState.mode}
+          />
+        )}
+
         <AppSidebar />
 
         {errorMessage && (

@@ -5,12 +5,16 @@ import { WelcomeScreen } from "@excalidraw/excalidraw/index";
 import React from "react";
 
 import { isExcalidrawPlusSignedUser } from "../app_constants";
+import { useSetAtom, useAtomValue } from "../app-jotai";
+import { authDialogStateAtom, currentUserAtom } from "../app-jotai";
 
 export const AppWelcomeScreen: React.FC<{
   onCollabDialogOpen: () => any;
   isCollabEnabled: boolean;
 }> = React.memo((props) => {
   const { t } = useI18n();
+  const setAuthDialogState = useSetAtom(authDialogStateAtom);
+  const currentUser = useAtomValue(currentUserAtom);
   let headingContent;
 
   if (isExcalidrawPlusSignedUser) {
@@ -56,16 +60,14 @@ export const AppWelcomeScreen: React.FC<{
               onSelect={() => props.onCollabDialogOpen()}
             />
           )}
-          {!isExcalidrawPlusSignedUser && (
-            <WelcomeScreen.Center.MenuItemLink
-              href={`${
-                import.meta.env.VITE_APP_PLUS_LP
-              }/plus?utm_source=excalidraw&utm_medium=app&utm_content=welcomeScreenGuest`}
+          {!currentUser && (
+            <WelcomeScreen.Center.MenuItem
+              onSelect={() => setAuthDialogState({ isOpen: true, mode: "signup" })}
               shortcut={null}
               icon={loginIcon}
             >
               Sign up
-            </WelcomeScreen.Center.MenuItemLink>
+            </WelcomeScreen.Center.MenuItem>
           )}
         </WelcomeScreen.Center.Menu>
       </WelcomeScreen.Center>

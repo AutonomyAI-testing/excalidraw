@@ -1,0 +1,75 @@
+@use "../css/theme" as *;
+
+.excalidraw {
+  .Counter {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--space-factor) * 2);
+
+    &__label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--input-label-color);
+      user-select: none;
+    }
+
+    &__controls {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--space-factor) * 2);
+      width: fit-content;
+    }
+
+    &__button {
+      width: var(--default-button-size);
+      height: var(--default-button-size);
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      flex-shrink: 0;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    &__input {
+      width: 5rem;
+      padding: calc(var(--space-factor) * 2) calc(var(--space-factor) * 3);
+      border: 1px solid var(--input-border-color);
+      border-radius: var(--border-radius-lg);
+      background-color: var(--input-bg-color);
+      color: var(--text-primary-color);
+      font-family: var(--ui-font);
+      font-size: 1rem;
+      text-align: center;
+      box-sizing: border-box;
+      transition: all 150ms ease-out;
+
+      &:hover {
+        background-color: var(--input-hover-bg-color);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px var(--focus-highlight-color);
+      }
+
+      /* Remove spinner arrows on number input */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &[type="number"] {
+        -moz-appearance: textfield;
+      }
+    }
+  }
+}

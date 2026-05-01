@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Features · Excalidraw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A tour of Excalidraw features — drawing, collaboration, embeds, and more." />
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="stylesheet" href="/static-pages/styles.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a class="site-nav-brand" href="/static-pages/about.html">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M5 22 Q4 14 8 9 Q14 3 22 6 Q26 9 24 16 Q21 23 13 23 Q8 23 5 22Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path d="M10 14 L18 14 M14 10 L14 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Excalidraw
+    </a>
+    <div class="site-nav-links">
+      <a href="/static-pages/about.html">About</a>
+      <a href="/static-pages/features.html">Features</a>
+      <a href="/static-pages/showcase.html">Showcase</a>
+      <a href="/">Open the app →</a>
+    </div>
+    <div class="site-nav-actions">
+      <button class="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+    </div>
+  </div>
+</nav>
+
+<main class="shell">
+
+<section class="hero">
+  <div>
+    <span class="badge badge-accent">Features</span>
+    <h1>Everything Excalidraw can do.</h1>
+    <p class="hero-tagline">
+      A guided tour of the canvas, the collaboration layer, and the developer surface —
+      with live UI you can poke at along the way.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="/static-pages/showcase.html">See live demos</a>
+      <button class="btn btn-secondary" type="button" data-modal-open="newsletter">
+        Subscribe to updates
+      </button>
+    </div>
+  </div>
+  <div aria-hidden="true">
+    <svg viewBox="0 0 380 240" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Box 1 -->
+        <path d="M30 50 Q28 80 32 110 Q90 112 130 108 Q132 80 130 50 Q80 48 30 50Z"/>
+        <text x="50" y="85" font-family="Virgil" font-size="18" stroke="none" fill="currentColor">Idea</text>
+        <!-- Arrow -->
+        <path d="M132 80 Q170 76 200 80" />
+        <path d="M200 80 L192 75 M200 80 L192 85"/>
+        <!-- Box 2 -->
+        <path d="M205 50 Q203 85 208 115 Q280 113 350 110 Q352 80 348 50 Q280 48 205 50Z" stroke="#6965db"/>
+        <text x="240" y="85" font-family="Virgil" font-size="18" stroke="none" fill="#6965db">Diagram</text>
+        <!-- Cloud -->
+        <path d="M120 170 Q100 168 100 185 Q90 188 95 200 Q105 210 130 208 Q175 215 200 200 Q215 195 210 180 Q205 168 185 170 Q170 155 145 165 Q130 162 120 170Z"/>
+        <text x="135" y="195" font-family="Virgil" font-size="14" stroke="none" fill="currentColor">shareable</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section data-tabs>
+  <h2>Pick a topic</h2>
+  <p class="muted">Tabs, accordions, switches, sliders — all the controls live for you to play with.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-target="canvas">Canvas</button>
+    <button class="tab" data-target="collab">Collab</button>
+    <button class="tab" data-target="export">Export</button>
+    <button class="tab" data-target="dev">Developer</button>
+  </div>
+
+  <div class="tab-panel active" data-panel="canvas">
+    <div class="card-grid">
+      <div class="card">
+        <div class="feature-icon">▱</div>
+        <h3>Shapes that wobble</h3>
+        <p>Rectangles, ellipses, diamonds, arrows, free-draw — every shape uses rough.js for that hand-sketched feel.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon">⌘</div>
+        <h3>Command palette</h3>
+        <p>Hit <code>Ctrl/⌘ K</code> to fuzzy-search every action without leaving the keyboard.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon">∞</div>
+        <h3>Infinite canvas</h3>
+        <p>Pan and zoom freely. Drawings autosave to <code>localStorage</code>, so a refresh never loses work.</p>
+      </div>
+      <div class="card">
+        <div class="feature-icon">⌫</div>
+        <h3>Undo / redo</h3>
+        <p>Full history with branching-aware reconciliation when collaborating live.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" data-panel="collab">
+    <h3>Live collaboration</h3>
+    <p>Click <em>Share</em>, send the link, and you're sketching together in real time. Cursors, selection, and edits all sync — and the room is end-to-end encrypted, so the server never sees your drawing.</p>
+    <ul>
+      <li>WebSocket-based with automatic reconnection</li>
+      <li>Conflict-free reconciliation when two clients edit at once</li>
+      <li>Per-user cursor color and name</li>
+      <li>Followable presence (jump to another participant's view)</li>
+    </ul>
+  </div>
+
+  <div class="tab-panel" data-panel="export">
+    <h3>Export anywhere</h3>
+    <p>Drawings move out cleanly:</p>
+    <div class="card-grid">
+      <div class="card"><h3>PNG / SVG</h3><p>Pixel or vector, with an optional dark-background variant.</p></div>
+      <div class="card"><h3>.excalidraw</h3><p>Lossless JSON — re-import to keep editing later.</p></div>
+      <div class="card"><h3>Clipboard</h3><p>Copy as image and paste straight into Slack, Notion, or a PR.</p></div>
+      <div class="card"><h3>Embed link</h3><p>Read-only public link with a fixed snapshot of the canvas.</p></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" data-panel="dev">
+    <h3>For developers</h3>
+    <p>The whole canvas ships as a React component. Drop it in, pass initial elements, hook up <code>onChange</code>, done.</p>
+    <pre style="background: var(--bg-soft); padding: 14px; border-radius: 8px; overflow-x: auto;"><code>import { Excalidraw } from "@excalidraw/excalidraw";
+
+&lt;Excalidraw
+  initialData={{ elements, appState }}
+  onChange={(elements, state) =&gt; save(elements)}
+  theme="light"
+/&gt;</code></pre>
+    <p class="muted">Used by VS Code, Obsidian, Notion-style apps, and many internal tools.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Search the feature list</h2>
+  <input type="search" placeholder="Type to filter — try 'collab' or 'export'" data-filter="#feature-list" aria-label="Filter features" />
+  <div class="card-grid" id="feature-list">
+    <div class="card"><h3>Live collaboration</h3><p>Real-time multiplayer with end-to-end encryption.</p></div>
+    <div class="card"><h3>Hand-drawn shapes</h3><p>Rough.js gives every primitive a sketch feel.</p></div>
+    <div class="card"><h3>Image embeds</h3><p>Drag any image onto the canvas — drawn over and annotated freely.</p></div>
+    <div class="card"><h3>Math (LaTeX)</h3><p>Mermaid + LaTeX rendering directly inside text elements.</p></div>
+    <div class="card"><h3>Libraries</h3><p>Reusable shape sets community-made and shareable.</p></div>
+    <div class="card"><h3>Export PNG</h3><p>One-click rasterized export at 1x, 2x, or 3x.</p></div>
+    <div class="card"><h3>Export SVG</h3><p>Vector export with embedded fonts.</p></div>
+    <div class="card"><h3>Dark mode</h3><p>Full theme support, including auto-follow OS preference.</p></div>
+    <div class="card"><h3>Keyboard shortcuts</h3><p>Every tool one tap away. Cheat sheet in the menu.</p></div>
+    <div class="card"><h3>Smart arrows</h3><p>Bind arrows to shapes — they follow as you drag.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Quick controls</h2>
+  <p class="muted">Fake settings panel. Nothing wired to real preferences — these are here to play with.</p>
+
+  <div class="card">
+    <div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);">
+      <div>
+        <strong>Auto-save to browser</strong>
+        <p style="margin: 4px 0 0;" class="muted">Drawings stay in <code>localStorage</code>.</p>
+      </div>
+      <label class="switch"><input type="checkbox" checked /><span class="slider"></span></label>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);">
+      <div>
+        <strong>Show grid</strong>
+        <p style="margin: 4px 0 0;" class="muted">Snap shapes to a faint background grid.</p>
+      </div>
+      <label class="switch"><input type="checkbox" /><span class="slider"></span></label>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line);">
+      <div>
+        <strong>Use system theme</strong>
+        <p style="margin: 4px 0 0;" class="muted">Follow OS dark/light preference.</p>
+      </div>
+      <label class="switch"><input type="checkbox" checked /><span class="slider"></span></label>
+    </div>
+
+    <div style="padding: 12px 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+        <strong>Stroke smoothing</strong>
+        <span class="muted"><span id="smoothVal">60</span>%</span>
+      </div>
+      <input type="range" min="0" max="100" value="60" data-out="#smoothVal" />
+    </div>
+
+    <div style="padding: 12px 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+        <strong>Roughness</strong>
+        <span class="muted"><span id="roughVal">2</span></span>
+      </div>
+      <input type="range" min="0" max="3" step="1" value="2" data-out="#roughVal" />
+    </div>
+
+    <div style="padding: 12px 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+        <strong>Connection strength</strong>
+        <span class="badge badge-ok">Online</span>
+      </div>
+      <div class="progress"><div class="progress-bar" style="width: 78%"></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <div class="accordion">
+    <div class="accordion-item open">
+      <button class="accordion-trigger">
+        <span>Is Excalidraw really free?</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="accordion-content">
+        <p>Yes — the open-source app and the React component are MIT-licensed and free to use, including commercially. There's a paid hosted version (Excalidraw+) for teams that want multi-board management and SSO.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-trigger">
+        <span>Where is my drawing stored?</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="accordion-content">
+        <p>Locally, in your browser's <code>localStorage</code>. When you collaborate, the snapshot lives in an end-to-end encrypted Firebase document — the server never has the key.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-trigger">
+        <span>Can I embed Excalidraw in my own app?</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="accordion-content">
+        <p>Yes — install <code>@excalidraw/excalidraw</code>, drop the React component, and configure props. See the developer docs for hooks like <code>onChange</code> and <code>excalidrawAPI</code>.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-trigger">
+        <span>Does it work offline?</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="accordion-content">
+        <p>The web app installs as a PWA. Once cached, it loads and saves locally without a network connection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="center">
+  <div class="flex gap-8" style="justify-content: center; flex-wrap: wrap;">
+    <div class="tooltip">
+      <button class="btn btn-primary" type="button" onclick="window.toast('Drawing copied to clipboard')">Try a toast</button>
+      <span class="tip-text">Triggers a notification at the top right</span>
+    </div>
+    <div class="tooltip">
+      <button class="btn btn-secondary" type="button" data-modal-open="newsletter">Open a modal</button>
+      <span class="tip-text">Pops a dialog you can close with ✕</span>
+    </div>
+    <div class="tooltip">
+      <button class="btn btn-ghost" type="button" onclick="window.toast('All shapes reset', { duration: 1500 })">Ghost button</button>
+      <span class="tip-text">Subtle action — also fires a toast</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="newsletter" role="dialog" aria-labelledby="newsletter-title">
+  <div class="modal">
+    <h3 id="newsletter-title">Get release notes by email</h3>
+    <p>We send a short note when there's a new release. No spam, unsubscribe anytime.</p>
+    <input type="text" placeholder="you@example.com" aria-label="Email" />
+    <div class="modal-actions">
+      <button class="btn btn-ghost" type="button" data-modal-close>Cancel</button>
+      <button class="btn btn-primary" type="button" data-modal-close onclick="window.toast('Subscribed!')">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Built with Excalidraw · <a href="https://github.com/excalidraw/excalidraw">GitHub</a> ·
+  <a href="/">Open the app</a>
+</footer>
+
+<script src="/static-pages/app.js"></script>
+</body>
+</html>

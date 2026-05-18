@@ -20,13 +20,13 @@ export const AppMainMenu: React.FC<{
 }> = React.memo((props) => {
   return (
     <MainMenu>
-      <MainMenu.ItemLink icon={HelpIcon} href="/about">
+      <MainMenu.ItemLink icon={HelpIcon} href="/about" target="_self">
         About Excalidraw
       </MainMenu.ItemLink>
-      <MainMenu.ItemLink icon={LibraryIcon} href="/features">
+      <MainMenu.ItemLink icon={LibraryIcon} href="/features" target="_self">
         Features
       </MainMenu.ItemLink>
-      <MainMenu.ItemLink icon={showcaseIcon} href="/showcase">
+      <MainMenu.ItemLink icon={showcaseIcon} href="/showcase" target="_self">
         Showcase
       </MainMenu.ItemLink>
       <MainMenu.Separator />
